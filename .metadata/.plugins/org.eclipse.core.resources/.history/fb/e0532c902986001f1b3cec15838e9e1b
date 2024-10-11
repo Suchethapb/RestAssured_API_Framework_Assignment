@@ -1,0 +1,55 @@
+package Assignment_NOTES_UI;
+
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class Bas_Class {
+    static WebDriver driver;
+
+    @Test()
+    public void login_to_app() {
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://practice.expandtesting.com/notes/app/login");
+        driver.findElement(By.xpath("//input[@id='email']")).clear();
+        driver.findElement(By.xpath("//input[@id='email']")).sendKeys("darshithtn@gmail.com");
+        driver.findElement(By.xpath("//input[@id='password']")).clear();
+        driver.findElement(By.xpath("//input[@id='password']")).sendKeys("123456");
+        driver.findElement(By.cssSelector("button[type='submit']")).click();
+    }
+
+    @Test(priority = 1)
+    public void delete() throws InterruptedException {
+        boolean noNotesMessage = driver.getPageSource().contains("You don't have any notes in all categories");
+
+        if (!noNotesMessage) {
+            List<WebElement> deleteButtons = driver.findElements(By.xpath("//button[contains(text(), 'Delete')]"));
+
+            for (WebElement deleteButton : deleteButtons) {
+                deleteButton.click(); // Click the Delete button for the note
+
+                // Wait for the confirmation button to be clickable
+                WebDriverWait wait = new WebDriverWait(driver, 10);
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='button'][normalize-space()='Delete']")));
+                driver.findElement(By.xpath("//button[@type='button'][normalize-space()='Delete']")).click(); // Confirm delete
+
+                // Optional: wait for some condition or to verify deletion
+                Thread.sleep(3000);
+            }
+        }
+    }
+
+    @AfterTest(enabled = false)
+    public void post_condition() {
+        if (driver != null) {
+            driver.close();
+        }
+    }
+}

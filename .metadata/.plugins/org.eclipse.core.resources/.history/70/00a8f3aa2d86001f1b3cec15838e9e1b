@@ -1,0 +1,22 @@
+package Assignment_NOTES_UI;
+
+public class create {
+	
+	@BeforeTest(){
+		
+	}
+	@Test
+	public void createNote() throws InterruptedException {
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("(//button[normalize-space()='+ Add Note'])[1]")).click();
+		driver.findElement((By.xpath("(//select[@id='category'])[1]"))).click();
+		WebElement dropdown = driver.findElement((By.xpath("(//select[@id='category'])[1]")));
+		Select select = new Select(dropdown);
+		select.selectByIndex(2);
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//input[@id='title'])[1]")).sendKeys("My Book");
+		driver.findElement(By.xpath("(//textarea[@id='description'])[1]")).sendKeys("Book details");
+		driver.findElement(By.xpath("(//button[normalize-space()='Create'])[1]")).click();
+	}
+
+}

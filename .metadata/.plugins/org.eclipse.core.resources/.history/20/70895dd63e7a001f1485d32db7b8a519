@@ -1,0 +1,33 @@
+package com.WebOrder;
+
+import org.testng.annotations.DataProvider;
+
+public class weborder_TestData {
+	@DataProvider(name = "Login")
+	public Object[][] getDataforLogin() {
+		// Multidimensional Object
+		// 3X3 or 4X3 or 4X5 or 2X4
+		return new Object[][] {
+
+				{"Tester", "test" },
+				{"Tester", "test" },
+				{"Tester", "test" },
+				{"Tester", "test" }
+				};
+
+	}
+	@DataProvider(name = "WebOrder_LoginAll_TCs")
+	public Object[][] getLogin_All_TCs_Scenarios() {
+		// Multidimensional Object
+		// 3X3 or 4X3 or 4X5
+		return new Object[][] {
+
+				{"Tester", "test","Logout" },
+				{"Tester1", "test","Invalid Login or Password." },
+				{"Tester", "test1","Invalid Login or Password." },
+				{"", "test","Invalid Login or Password." },
+				{"", "","Invalid Login or Password." }
+				};
+
+	}
+}

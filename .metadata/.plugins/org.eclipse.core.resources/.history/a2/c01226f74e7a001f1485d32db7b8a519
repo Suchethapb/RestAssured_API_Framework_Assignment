@@ -1,0 +1,50 @@
+package com.WebOrder;
+
+import org.testng.annotations.DataProvider;
+
+public class weborder_TestData {
+	@DataProvider(name = "Login")
+	public Object[][] getDataforLogin() {
+		// Multidimensional Object
+		// 3X3 or 4X3 or 4X5 or 2X4
+		return new Object[][] {
+
+				{"Tester", "test" },
+				{"Tester", "test" },
+				{"Tester", "test" },
+				{"Tester", "test" }
+				};
+
+	}
+	@DataProvider(name = "WebOrder_LoginAll_TCs")
+	public Object[][] getLogin_All_TCs_Scenarios() {
+		// Multidimensional Object
+		// 3X3 or 4X3 or 4X5
+		return new Object[][] {
+
+				{"Tester", "test","Logout" },
+				{"Tester1", "test","Invalid Login or Password." },
+				{"Tester", "test1","Invalid Login or Password." },
+				{"", "test","Invalid Login or Password." },
+				{"", "","Invalid Login or Password." }
+				};
+
+	}
+	@DataProvider(name = "WebOrder_All_Orders_TC")
+	public Object[][] getOrders_All_TCs_Scenarios() {
+		// Multidimensional Object
+		// 3X3 or 4X3 or 4X5
+		return new Object[][] {
+				//quantity,  discount, name, street, city, state, zip, cardNo, , expiry, Expected Result
+				//Correct order
+				{"1", "5","Andrew V", "123 Main St", "Washington", "DC", "20010", "123456789", "12/24", "New order has been successfully added."},
+				{"0", "0","Andrew V", "123 Main St", "Washington", "DC", "20010", "123456789","12/24", "Quantity must be greater than zero."},
+				{"1", "5","", "123 Main St", "Washington", "DC", "20010", "123456789","12/24", "Field 'Customer name' cannot be empty."},
+				{"1", "5","Andrew V", "123 Main St", "Washington", "DC", "", "123456789", "12/24", "Field 'Zip' cannot be empty."},
+				{"1", "5","Andrew V", "123 Main St", "Washington", "DC", "ff", "123456789", "12/24", "Invalid format. Only digits allowed."},
+				{"1", "5","Andrew V", "123 Main St", "Washington", "DC", "20010", "ff","12/24", "Invalid format. Only digits allowed."},
+				{"1", "5","Andrew V", "123 Main St", "Washington", "DC", "20010", "123456789", "ff/ff", "Invalid format. Required format is mm/yy."},
+				};
+
+	}
+}

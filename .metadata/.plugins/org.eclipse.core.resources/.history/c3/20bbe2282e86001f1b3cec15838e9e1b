@@ -1,0 +1,10 @@
+package Assignment_NOTES_UI;
+
+public class create {
+	
+	@BeforeTest(){
+		
+	}
+	
+
+}

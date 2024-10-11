@@ -1,0 +1,5 @@
+package com.spree.common;
+
+public class BaseSetup {
+
+}

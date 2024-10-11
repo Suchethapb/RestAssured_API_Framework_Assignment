@@ -1,0 +1,22 @@
+package com.WebOrder;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class assignment01 {
+	
+	
+
+}
+@Beforetest
+public void openBrowser() {
+	//WebDriverManager.firefoxdriver().setup();
+	driver = new FirefoxDriver();
+	driver.get(
+			"http://secure.smartbearsoftware.com/samples/TestComplete11/WebOrders/Login.aspx?ReturnUrl=%2fsamples%2fTestComplete11%2fWebOrders%2fDefault.aspx");
+	driver.manage().window().maximize();
+	driver.findElement(By.xpath("//input[@name='ctl00$MainContent$username']")).sendKeys("Tester");
+	driver.findElement(By.xpath("//input[@name='ctl00$MainContent$password']")).sendKeys("test");
+	driver.findElement(By.cssSelector("input[name='ctl00$MainContent$login_button']")).click();
+
+}

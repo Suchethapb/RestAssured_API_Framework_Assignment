@@ -1,0 +1,18 @@
+package NotesAssignment_User;
+
+import org.testng.annotations.BeforeTest;
+
+import pk_MyNotes.BaseClass;
+
+public class Login_User {
+	static String Token;
+	@BeforeTest
+	public static String before() {
+
+		Token=BaseClass.LOGIN("suchetha01@mail.com", "API05**");
+		//String LOGINid = BaseClass.bookindid;
+		//outh_token = BaseClass.outh_token;
+		return Token;
+	}
+
+}

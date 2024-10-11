@@ -1,0 +1,15 @@
+package com.WebOrder;
+
+import org.testng.annotations.DataProvider;
+
+public class assignment_testdata {
+	@DataProvider(name = "Login")
+	public Object[][] getDataforLogin() {
+		// Multidimensional Object
+		// 3X3 or 4X3 or 4X5 or 2X4
+		return new Object[] {
+
+						{"Tester"};
+
+	}
+}
